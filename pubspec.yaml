@@ -42,7 +42,7 @@ dependencies:
   percent_indicator: ^4.0.0
   image_picker: ^0.8.4+5
   shared_preferences: ^2.0.12
-  feather_icons_flutter: ^4.7.4
+  flutter_feather_icons: ^2.0.0+1
 
 dev_dependencies:
   flutter_test:

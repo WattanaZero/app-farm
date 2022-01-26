@@ -16,10 +16,40 @@ class ProductDetail extends StatefulWidget {
 
 class _ProductDetailState extends State<ProductDetail> {
   File? imageFile;
+  List<PickedFile> listFileImage = [];
+  
   String dropdownValue = 'ตรวจเเล้ว';
   final boxPadding = SizedBox(
     height: 10,
   );
+  _getFromGallery() async {
+    
+    final pickedFile = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+      maxWidth: 720,
+      maxHeight: 720,
+    );
+    if (pickedFile != null) {
+      setState(() {
+        imageFile = File(pickedFile.path);
+      });
+    }
+  }
+
+  /// Get from Camera
+  _getFromCamera() async {
+    final pickedFile = await ImagePicker().pickImage(
+      source: ImageSource.camera,
+      maxWidth: 1800,
+      maxHeight: 1800,
+    );
+    if (pickedFile != null) {
+      setState(() {
+        imageFile = File(pickedFile.path);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -41,7 +71,6 @@ class _ProductDetailState extends State<ProductDetail> {
                 Row(
                   // mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-
                   children: [
                     SizedBox(
                       height: 40,
@@ -99,39 +128,45 @@ class _ProductDetailState extends State<ProductDetail> {
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
                                                   children: <Widget>[
-                                                    TextButton.icon(
-                                                      label: Text(
-                                                          'Upload image',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.white,
-                                                              fontSize: isTablet
-                                                                  ? percenW * 3
-                                                                  : 12,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold)),
-                                                      icon: Icon(
-                                                        Icons
-                                                            .camera_alt_rounded,
-                                                        color: Colors.grey,
-                                                        size: 24.0,
-                                                      ),
-                                                      onPressed: () {
-                                                        _getFromGallery();
-                                                      },
-                                                      style: ElevatedButton
-                                                          .styleFrom(
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      20.0),
+                                                    SizedBox(
+                                                      height: size.height / 20,
+                                                      width: size.width / 4,
+                                                      child: TextButton.icon(
+                                                        label: Text('Upload',
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: isTablet
+                                                                    ? percenW *
+                                                                        3
+                                                                    : 12,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold)),
+                                                        icon: Icon(
+                                                          Icons
+                                                              .camera_alt_rounded,
+                                                          color: Colors.white,
+                                                          size: isTablet
+                                                              ? percenW * 3
+                                                              : 18,
                                                         ),
-                                                        primary:
-                                                            Color(0xFF344CC7),
-                                                        elevation: 5,
+                                                        onPressed: () {
+                                                          _getFromGallery();
+                                                        },
+                                                        style: ElevatedButton
+                                                            .styleFrom(
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        20.0),
+                                                          ),
+                                                          primary:
+                                                              Color(0xFF344CC7),
+                                                          elevation: 5,
+                                                        ),
                                                       ),
                                                     ),
                                                     boxPadding,
@@ -139,9 +174,18 @@ class _ProductDetailState extends State<ProductDetail> {
                                                 ),
                                               )
                                             : Container(
-                                                child: Image.file(
-                                                  imageFile!,
-                                                  fit: BoxFit.cover,
+                                                child: Padding(
+                                                  padding: EdgeInsets.only(
+                                                      right: 10),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    child: Image.file(
+                                                      imageFile!,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
                                                 ),
                                               )),
                                     Text(
@@ -214,7 +258,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                     boxPadding,
                                     Padding(
                                       padding:
-                                          EdgeInsets.symmetric(horizontal: 10),
+                                          EdgeInsets.symmetric(horizontal: 0),
                                       child: Text(
                                         "รายละเอียด",
                                         style: TextStyle(
@@ -226,7 +270,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                     boxPadding,
                                     Padding(
                                       padding:
-                                          EdgeInsets.symmetric(horizontal: 10),
+                                          EdgeInsets.symmetric(horizontal: 0),
                                       child: Container(
                                         child: Padding(
                                           padding:
@@ -256,6 +300,56 @@ class _ProductDetailState extends State<ProductDetail> {
                                         ),
                                       ),
                                     ),
+                                    boxPadding,
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 10),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            boxShadow: <BoxShadow>[
+                                              BoxShadow(
+                                                color: Colors.black
+                                                    .withOpacity(0.2),
+                                                offset: Offset(0, 3),
+                                                blurRadius: 6.0,
+                                              ),
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(15.0),
+                                            gradient: LinearGradient(
+                                                // ignore: prefer_const_literals_to_create_immutables
+                                                colors: [
+                                                  Color.fromARGB(
+                                                      255, 53, 122, 226),
+                                                  Color.fromARGB(
+                                                      255, 131, 175, 240)
+                                                ])),
+                                        alignment: Alignment.center,
+                                        child: ElevatedButton(
+                                          onPressed: () {},
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Colors.transparent,
+                                            onSurface: Colors.transparent,
+                                            shadowColor: Colors.transparent,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15.0),
+                                            ),
+                                          ),
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            height: 50.0,
+                                            padding: const EdgeInsets.all(0),
+                                            child: Text(
+                                              "Save",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    )
                                   ],
                                 ),
                               ),
@@ -275,32 +369,5 @@ class _ProductDetailState extends State<ProductDetail> {
         ],
       ),
     );
-  }
-
-  _getFromGallery() async {
-    final pickedFile = await ImagePicker().pickImage(
-      source: ImageSource.gallery,
-      maxWidth: 720,
-      maxHeight: 720,
-    );
-    if (pickedFile != null) {
-      setState(() {
-        imageFile = File(pickedFile.path);
-      });
-    }
-  }
-
-  /// Get from Camera
-  _getFromCamera() async {
-    final pickedFile = await ImagePicker().pickImage(
-      source: ImageSource.camera,
-      maxWidth: 1800,
-      maxHeight: 1800,
-    );
-    if (pickedFile != null) {
-      setState(() {
-        imageFile = File(pickedFile.path);
-      });
-    }
   }
 }
