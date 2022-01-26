@@ -1,3 +1,4 @@
+import 'package:appfarm/Screens/detail/setting_profile_page.dart';
 import 'package:appfarm/widgets/topbar/appbarBg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -18,7 +19,7 @@ class SettingScreen extends StatelessWidget {
             borderRadius: BorderRadius.circular(15.0),
           ),
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -31,12 +32,12 @@ class SettingScreen extends StatelessWidget {
                 ),
                 ListTile(
                   onTap: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => ProfileScreen(
-                    //               dataEmployee: data,
-                    //             )));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfilePage(
+                                  // dataEmployee: data,
+                                )));
                   },
                   leading: Container(
                     decoration: BoxDecoration(
@@ -110,15 +111,38 @@ class SettingScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 15),
-            // child: GradientBtnWg(
-            //   'signOut'.tr,
-            //   onTab: () {
-            //     Navigator.popUntil(context, ModalRoute.withName('/'));
-            //     Get.find<StmAuth>().setLogin(false, null);
-            //   },
-            // ),
-          ),
+              padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 15),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.popUntil(context, ModalRoute.withName('/'));
+                  // Get.find<StmAuth>().setLogin(false, null);
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 55,
+                  alignment: FractionalOffset.center,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: <Color>[
+                        Color(0xFF344CC7),
+                        Color(0xFF61A0FF),
+                      ],
+                    ),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(7.0),
+                    ),
+                  ),
+                  child: Text(
+                    'ออกจากระบบ',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 19.0,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.3,
+                    ),
+                  ),
+                ),
+              )),
         ],
       ),
     );

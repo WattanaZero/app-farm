@@ -42,5 +42,9 @@ class APIService {
     _prefs?.setString("username", data.username);
     _prefs?.setString("firstName", data.firstName);
     _prefs?.setString("lastName", data.lastName);
+    _prefs?.setString("dateOfBirth", data.dateOfBirth);
+    _prefs?.setString("mobile", data.mobile);
+    _prefs?.setString("email", data.email);
+    // _prefs?.setString("role", data.role);
   }
 }
