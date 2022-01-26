@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:appfarm/Screens/home_page.dart';
+import 'package:appfarm/Screens/setting_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -48,7 +49,7 @@ class Home extends StatelessWidget {
   }
 
   List<Widget> _buildScreens() {
-    return [HomePageScreen(),HomePageScreen(), HomePageScreen()];
+    return [HomePageScreen(),HomePageScreen(), SettingScreen()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
