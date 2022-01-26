@@ -17,13 +17,12 @@ class ProductDetail extends StatefulWidget {
 class _ProductDetailState extends State<ProductDetail> {
   File? imageFile;
   List<PickedFile> listFileImage = [];
-  
   String dropdownValue = 'ตรวจเเล้ว';
   final boxPadding = SizedBox(
     height: 10,
   );
+  
   _getFromGallery() async {
-    
     final pickedFile = await ImagePicker().pickImage(
       source: ImageSource.gallery,
       maxWidth: 720,
@@ -71,6 +70,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 Row(
                   // mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
+
                   children: [
                     SizedBox(
                       height: 40,

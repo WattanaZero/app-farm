@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types, prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, duplicate_ignore, unused_local_variable, unnecessary_new
 
 import 'package:appfarm/Screens/detail/product_detail.dart';
+import 'package:appfarm/Screens/detail/product_detail_check.dart';
 import 'package:appfarm/widgets/text/text_row.dart';
 import 'package:appfarm/widgets/topbar/appbarBg.dart';
 import 'package:flutter/foundation.dart';
@@ -602,7 +603,7 @@ class _summaryDetailState extends State<SummaryDetail> {
                                                                   MaterialPageRoute(
                                                                     builder:
                                                                         (context) =>
-                                                                            ProductDetail(),
+                                                                            ProductDetailCheck(),
                                                                   )).then((value) {});
                                                             },
                                                             child: Padding(
