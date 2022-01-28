@@ -8,6 +8,8 @@ import 'package:appfarm/widgets/topbar/appbarBg.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'admin.dart';
+import 'list_product.dart';
 import 'product_search.dart';
 
 class HomePageScreen extends StatelessWidget {
@@ -128,19 +130,27 @@ class HomePageScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(
-                  left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
-              child: CardMini(
-                  background: Colors.white,
-                  icon: Icon(
-                    Icons.list_rounded,
-                    color: Color(0xffBC4009),
-                    size: size.width * .12,
-                  ),
-                  size: isTablet ? size.width * .25 : size.width * .30,
-                  width: size.width,
-                  text: 'รายการตรวจสินค้า'),
-            ),
+                padding: EdgeInsets.only(
+                    left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ListProduct(),
+                        )).then((value) {});
+                  },
+                  child: CardMini(
+                      background: Colors.white,
+                      icon: Icon(
+                        Icons.list_rounded,
+                        color: Color(0xffBC4009),
+                        size: size.width * .12,
+                      ),
+                      size: isTablet ? size.width * .25 : size.width * .30,
+                      width: size.width,
+                      text: 'รายการตรวจสินค้า'),
+                )),
             Padding(
               padding: EdgeInsets.only(
                   left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
@@ -156,19 +166,27 @@ class HomePageScreen extends StatelessWidget {
                   text: 'บัญชีของฉัน'),
             ),
             Padding(
-              padding: EdgeInsets.only(
-                  left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
-              child: CardMini(
-                  background: Colors.white,
-                  icon: Icon(
-                    Icons.admin_panel_settings,
-                    color: Color(0xff404040),
-                    size: size.width * .12,
-                  ),
-                  size: isTablet ? size.width * .25 : size.width * .30,
-                  width: size.width,
-                  text: 'บัญชีผู้ดูเเล'),
-            )
+                padding: EdgeInsets.only(
+                    left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AdminPage(),
+                        )).then((value) {});
+                  },
+                  child: CardMini(
+                      background: Colors.white,
+                      icon: Icon(
+                        Icons.admin_panel_settings,
+                        color: Color(0xff404040),
+                        size: size.width * .12,
+                      ),
+                      size: isTablet ? size.width * .25 : size.width * .30,
+                      width: size.width,
+                      text: 'บัญชีผู้ดูเเล'),
+                ))
           ],
         ),
         SizedBox(
