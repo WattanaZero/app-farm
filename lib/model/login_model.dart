@@ -1,12 +1,23 @@
 class LoginResponseModel {
-  final String token;
-  final String username;
-  final String firstName;
-  final String lastName;
-  final String error;
+  String token;
+  String username;
+  String firstName;
+  String lastName;
+  String dateOfBirth;
+  String mobile;
+  String email;
+  // final String role;
+  String error;
 
   LoginResponseModel(
-      {required this.username, required this.firstName, required this.lastName, required this.token, required this.error});
+      {required this.username,
+      required this.firstName,
+      required this.lastName,
+      required this.token,
+      required this.error,
+      required this.dateOfBirth,
+      required this.mobile,
+      required this.email});
 
   factory LoginResponseModel.fromJson(Map<String, dynamic> json) {
     return LoginResponseModel(
@@ -14,6 +25,9 @@ class LoginResponseModel {
       username: json["username"] != null ? json["username"] : "",
       firstName: json["firstName"] != null ? json["firstName"] : "",
       lastName: json["lastName"] != null ? json["lastName"] : "",
+      dateOfBirth: json["dateOfBirth"] != null ? json["dateOfBirth"] : "",
+      mobile: json["mobile"] != null ? json["mobile"] : "",
+      email: json["email"] != null ? json["email"] : "",
       error: json["error"] != null ? json["error"] : "",
     );
   }
