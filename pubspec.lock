@@ -256,7 +256,11 @@ packages:
     version: "2.4.3"
   intl:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     dependency: "direct main"
+=======
+    dependency: transitive
+>>>>>>> Stashed changes
 =======
     dependency: transitive
 >>>>>>> Stashed changes
