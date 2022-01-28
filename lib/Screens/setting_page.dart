@@ -1,4 +1,7 @@
 import 'package:appfarm/Screens/detail/setting_profile_page.dart';
+import 'package:appfarm/Screens/login.dart';
+import 'package:appfarm/model/user_profile.dart';
+import 'package:appfarm/utils/auth_service.dart';
 import 'package:appfarm/widgets/topbar/appbarBg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -6,8 +9,8 @@ import 'package:get/get.dart';
 
 class SettingScreen extends StatelessWidget {
   // final authCon = Get.find<StmAuth>();
-  // final EmployeeData data;
-  SettingScreen();
+  final ProfileData? data;
+  SettingScreen({this.data});
   @override
   Widget build(BuildContext context) {
     return AppbarBg(
@@ -36,7 +39,7 @@ class SettingScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => ProfilePage(
-                                  // dataEmployee: data,
+                                dataProfileData: data,
                                 )));
                   },
                   leading: Container(
@@ -114,8 +117,9 @@ class SettingScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 15),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.popUntil(context, ModalRoute.withName('/'));
+                  // Navigator.popUntil(context, ModalRoute.withName('/'));
                   // Get.find<StmAuth>().setLogin(false, null);
+                  AuthenService.removeLogin();
                 },
                 child: Container(
                   width: double.infinity,
