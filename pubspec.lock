@@ -257,7 +257,11 @@ packages:
   intl:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     dependency: "direct main"
+=======
+    dependency: transitive
+>>>>>>> Stashed changes
 =======
     dependency: transitive
 >>>>>>> Stashed changes
