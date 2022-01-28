@@ -152,7 +152,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                                               : 18,
                                                         ),
                                                         onPressed: () {
-                                                          _getFromGallery();
+                                                          _getFromCamera();
                                                         },
                                                         style: ElevatedButton
                                                             .styleFrom(

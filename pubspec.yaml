@@ -43,6 +43,9 @@ dependencies:
   image_picker: ^0.8.4+5
   shared_preferences: ^2.0.12
   flutter_feather_icons: ^2.0.0+1
+  path: ^1.8.0
+  multi_image_picker2: ^5.0.02
+  barcode_scan2: ^4.2.0
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +75,7 @@ flutter:
     - assets/img/bottom2.png
     - assets/img/top1.png
     - assets/img/top2.png
+    - assets/img/qr_repair.png
     
   fonts:
     - family: Prompt

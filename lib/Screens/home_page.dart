@@ -1,10 +1,13 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_new, prefer_const_literals_to_create_immutables, unused_local_variable, use_key_in_widget_constructors
+import 'package:appfarm/Screens/waste_report.dart';
 import 'package:appfarm/widgets/card/card_count.dart';
 import 'package:appfarm/widgets/card/card_dashboard_chart.dart';
 import 'package:appfarm/widgets/card/card_mini.dart';
 import 'package:appfarm/widgets/topbar/appbarBg.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'product_search.dart';
 
 class HomePageScreen extends StatelessWidget {
   final heightPercent = Get.height / 100;
@@ -60,6 +63,7 @@ class HomePageScreen extends StatelessWidget {
               padding: EdgeInsets.only(
                   left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
               child: CardMini(
+                  background: Colors.white,
                   icon: Icon(
                     Icons.check_box_outlined,
                     color: Color(0xff08AA2D),
@@ -70,35 +74,55 @@ class HomePageScreen extends StatelessWidget {
                   text: 'ตรวจนับ'),
             ),
             Padding(
+                padding: EdgeInsets.only(
+                    left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductSearch(),
+                        )).then((value) {});
+                  },
+                  child: CardMini(
+                      background: Colors.white,
+                      icon: Icon(
+                        Icons.search,
+                        color: Color(0xff007D82),
+                        size: size.width * .12,
+                      ),
+                      size: isTablet ? size.width * .25 : size.width * .30,
+                      width: size.width,
+                      text: 'ค้นหารรายการผัก'),
+                )),
+            Padding(
               padding: EdgeInsets.only(
                   left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
-              child: CardMini(
-                  icon: Icon(
-                    Icons.search,
-                    color: Color(0xff007D82),
-                    size: size.width * .12,
-                  ),
-                  size: isTablet ? size.width * .25 : size.width * .30,
-                  width: size.width,
-                  text: 'ค้นหารรายการผัก'),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => WasteReport(),
+                      )).then((value) {});
+                },
+                child: CardMini(
+                    background: Colors.white,
+                    icon: Icon(
+                      Icons.warning_amber_rounded,
+                      color: Color(0xffCF0E0E),
+                      size: size.width * .12,
+                    ),
+                    size: isTablet ? size.width * .25 : size.width * .30,
+                    width: size.width,
+                    text: 'เเจ้งผักเสีย'),
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(
                   left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
               child: CardMini(
-                  icon: Icon(
-                    Icons.warning_amber_rounded,
-                    color: Color(0xffCF0E0E),
-                    size: size.width * .12,
-                  ),
-                  size: isTablet ? size.width * .25 : size.width * .30,
-                  width: size.width,
-                  text: 'เเจ้งผักเสีย'),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                  left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
-              child: CardMini(
+                  background: Colors.white,
                   icon: Icon(
                     Icons.list_rounded,
                     color: Color(0xffBC4009),
@@ -112,6 +136,7 @@ class HomePageScreen extends StatelessWidget {
               padding: EdgeInsets.only(
                   left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
               child: CardMini(
+                  background: Colors.white,
                   icon: Icon(
                     Icons.person,
                     color: Color(0xff003982),
@@ -125,6 +150,7 @@ class HomePageScreen extends StatelessWidget {
               padding: EdgeInsets.only(
                   left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
               child: CardMini(
+                  background: Colors.white,
                   icon: Icon(
                     Icons.admin_panel_settings,
                     color: Color(0xff404040),

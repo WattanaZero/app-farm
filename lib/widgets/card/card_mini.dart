@@ -8,11 +8,13 @@ class CardMini extends StatelessWidget {
   final String text;
   final double size;
   final double width;
+  final Color? background;
   CardMini( 
       {Key? key, 
       required this.icon,
       this.text = "",
       this.size = 0,
+      this.background,
       required this.width}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class CardMini extends StatelessWidget {
         width: size,
         height: size,
         child: Card(
-          color: Colors.white,
+          color: background,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),

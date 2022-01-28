@@ -21,6 +21,8 @@ class AppbarBg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    var percenW = size.width / 100;
+    var isTablet = size.width > 600;
     return Scaffold(
       body: Stack(
         children: [
@@ -65,10 +67,11 @@ class AppbarBg extends StatelessWidget {
                         ]),
                   ),
                   trailing: CircleAvatar(
-                    radius: 22.0,
+                    radius: 25,
                     backgroundColor: Colors.white,
                     backgroundImage: AssetImage(
-                        "assets/img/harvest.png"), // no matter how big it is, it won't overflow
+                        "assets/img/harvest.png",
+                        ), // no matter how big it is, it won't overflow
                   ),
                 ),
               ),
