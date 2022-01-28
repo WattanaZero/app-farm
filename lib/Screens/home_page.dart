@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_new, prefer_const_literals_to_create_immutables, unused_local_variable, use_key_in_widget_constructors
+import 'package:appfarm/Screens/count_number_page.dart';
 import 'package:appfarm/Screens/waste_report.dart';
 import 'package:appfarm/widgets/card/card_count.dart';
 import 'package:appfarm/widgets/card/card_dashboard_chart.dart';
@@ -60,19 +61,27 @@ class HomePageScreen extends StatelessWidget {
           alignment: WrapAlignment.spaceEvenly,
           children: [
             Padding(
-              padding: EdgeInsets.only(
-                  left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
-              child: CardMini(
-                  background: Colors.white,
-                  icon: Icon(
-                    Icons.check_box_outlined,
-                    color: Color(0xff08AA2D),
-                    size: size.width * .12,
-                  ),
-                  size: isTablet ? size.width * .25 : size.width * .30,
-                  width: size.width,
-                  text: 'ตรวจนับ'),
-            ),
+                padding: EdgeInsets.only(
+                    left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CountNumberPage(),
+                        )).then((value) {});
+                  },
+                  child: CardMini(
+                      background: Colors.white,
+                      icon: Icon(
+                        Icons.check_box_outlined,
+                        color: Color(0xff08AA2D),
+                        size: size.width * .12,
+                      ),
+                      size: isTablet ? size.width * .25 : size.width * .30,
+                      width: size.width,
+                      text: 'ตรวจนับ'),
+                )),
             Padding(
                 padding: EdgeInsets.only(
                     left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),

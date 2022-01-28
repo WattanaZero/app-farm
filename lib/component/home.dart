@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:appfarm/Screens/count_number_page.dart';
 import 'package:appfarm/Screens/home_page.dart';
 import 'package:appfarm/Screens/setting_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -44,31 +45,31 @@ class Home extends StatelessWidget {
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),
       ),
-      navBarStyle: NavBarStyle.style1, // Choose the nav bar style with this property.
+      navBarStyle: NavBarStyle.style9, // Choose the nav bar style with this property.
     );
   }
 
   List<Widget> _buildScreens() {
-    return [HomePageScreen(),HomePageScreen(), SettingScreen()];
+    return [HomePageScreen(),CountNumberPage(), SettingScreen()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.home),
-        title: ("Home"),
+        title: ("หน้าหลัก"),
         activeColorPrimary: CupertinoColors.activeBlue,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.person),
-        title: ("Profile"),
+        icon: Icon(CupertinoIcons.checkmark_rectangle),
+        title: ("ตรวจนับ"),
         activeColorPrimary: CupertinoColors.activeBlue,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.settings),
-        title: ("Settings"),
+        title: ("ตั้งค่า"),
         activeColorPrimary: CupertinoColors.activeBlue,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),

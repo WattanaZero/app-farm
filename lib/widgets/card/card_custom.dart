@@ -3,23 +3,23 @@
 import 'package:flutter/material.dart';
 
 class CardCustom extends StatelessWidget {
-  final Widget child;
-  final Color color;
-  final Color backgroundColor;
-  final double borderRadius;
-  final double height;
-  final double width;
-  final double padding;
+  final Widget? child;
+  final Color? color;
+  final Color? backgroundColor;
+  final double? borderRadius;
+  final double? height;
+  final double? width;
+  final double? padding;
 
   CardCustom({
     Key? key,
-    required this.width,
-    required this.height,
-    required this.child,
-    required this.color,
+    this.width,
+    this.height,
+    this.child,
+    this.color,
     this.backgroundColor = Colors.white,
     this.borderRadius = 15,
-    required this.padding,
+    this.padding,
   }) : super(key: key);
 
   @override
@@ -30,7 +30,7 @@ class CardCustom extends StatelessWidget {
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.all(
-          Radius.circular(borderRadius),
+          Radius.circular(borderRadius!),
         ),
         boxShadow: <BoxShadow>[
           BoxShadow(
