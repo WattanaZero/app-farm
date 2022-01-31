@@ -104,7 +104,7 @@ class _summaryDetailState extends State<SummaryDetail> {
                     ),
                   );
                 else
-                  return spinkit;
+                  return test();
               })),
       child: ListView(
         children: [
@@ -859,7 +859,7 @@ class _summaryDetailState extends State<SummaryDetail> {
                     ),
                   );
                 else
-                  return spinkit;
+                  return test();
               }),
         ],
       ),
