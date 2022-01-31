@@ -13,6 +13,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
+      
       context,
       controller: _controller,
       screens: _buildScreens(),
