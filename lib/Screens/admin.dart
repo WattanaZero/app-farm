@@ -27,7 +27,7 @@ class ChartData {
 }
 
 class _AdminPageState extends State<AdminPage> {
-  TooltipBehavior? _tooltipBehavior1, _tooltipBehavior2;
+  TooltipBehavior? _tooltipBehavior1, _tooltipBehavior2,_tooltipBehavior3,_tooltipBehavior4;
   final int yearNow = (new DateTime.now().year + 543);
   int? valueYear;
   int? yearSelect;
@@ -37,6 +37,8 @@ class _AdminPageState extends State<AdminPage> {
     super.initState();
     _tooltipBehavior1 = TooltipBehavior(enable: true);
     _tooltipBehavior2 = TooltipBehavior(enable: true);
+    _tooltipBehavior3 = TooltipBehavior(enable: true);
+    _tooltipBehavior4 = TooltipBehavior(enable: true);
     yearSelect = (new DateTime.now().year);
     yearSelectThai = (new DateTime.now().year + 543);
   }
@@ -382,7 +384,7 @@ class _AdminPageState extends State<AdminPage> {
                           height: 300,
                           // width: 300,
                           child: SfCircularChart(
-                              tooltipBehavior: _tooltipBehavior2,
+                              tooltipBehavior: _tooltipBehavior3,
                               legend: Legend(isVisible: true),
                               series: <CircularSeries>[
                                 // Renders doughnut chart
@@ -444,7 +446,7 @@ class _AdminPageState extends State<AdminPage> {
                               primaryXAxis: CategoryAxis(),
                               primaryYAxis: NumericAxis(
                                   numberFormat: NumberFormat.decimalPattern()),
-                              tooltipBehavior: _tooltipBehavior1,
+                              tooltipBehavior: _tooltipBehavior4,
                               series: <ChartSeries<SalesData, String>>[
                                 SplineAreaSeries<SalesData, String>(
                                     name: "ข้อมูลสินค้า (บาท)",
