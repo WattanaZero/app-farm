@@ -7,13 +7,13 @@ class AppbarBg extends StatelessWidget {
   final String title;
   final String subTitle;
   final Widget child;
-  final Widget topWidget;
+  final Widget? topWidget;
   final bool isImg;
   const AppbarBg({
     Key? key,
     this.title = '',
     this.subTitle = '',
-    required this.topWidget,
+    this.topWidget,
     this.isImg = true,
     required this.child,
   }) : super(key: key);
@@ -70,8 +70,8 @@ class AppbarBg extends StatelessWidget {
                     radius: 25,
                     backgroundColor: Colors.white,
                     backgroundImage: AssetImage(
-                        "assets/img/harvest.png",
-                        ), // no matter how big it is, it won't overflow
+                      "assets/img/harvest.png",
+                    ), // no matter how big it is, it won't overflow
                   ),
                 ),
               ),

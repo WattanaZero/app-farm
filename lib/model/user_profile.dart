@@ -36,7 +36,6 @@ class Profile {
   String? updateBy;
   String? updateDate;
   String? roleCode;
-  String? fullname;
 
   Profile(
       { this.employeeId,
@@ -52,7 +51,6 @@ class Profile {
        this.updateBy,
        this.updateDate,
        this.roleCode,
-       this.fullname
        });
 
   Profile.fromJson(Map<String, dynamic> json) {
@@ -69,7 +67,6 @@ class Profile {
     updateBy = json['updateBy'];
     updateDate = json['updateDate'];
     roleCode = json['roleCode'];
-    fullname = json['fullname'];
   }
 
   Map<String, dynamic> toJson() {
@@ -87,7 +84,6 @@ class Profile {
     data['updateBy'] = this.updateBy;
     data['updateDate'] = this.updateDate;
     data['roleCode'] = this.roleCode;
-    data['fullname'] = this.fullname;
     return data;
   }
 }

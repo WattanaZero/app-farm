@@ -1,3 +1,4 @@
+import 'package:appfarm/Screens/detail/lang_screen.dart';
 import 'package:appfarm/Screens/detail/setting_profile_page.dart';
 import 'package:appfarm/Screens/login.dart';
 import 'package:appfarm/model/user_profile.dart';
@@ -83,7 +84,13 @@ class SettingScreen extends StatelessWidget {
                 ),
                 ListTile(
                   onTap: () {
-                    // Get.to(LangSettingScreen());
+                    pushNewScreen(
+                      context,
+                      screen: LangScreen(),
+                      withNavBar: false,
+                      pageTransitionAnimation:
+                          PageTransitionAnimation.cupertino,
+                    );
                   },
                   leading: Container(
                     decoration: BoxDecoration(
@@ -128,7 +135,7 @@ class SettingScreen extends StatelessWidget {
                 onTap: () {
                   // Navigator.popUntil(context, ModalRoute.withName('/'));
                   // Get.find<StmAuth>().setLogin(false, null);
-                  
+
                   AuthenService.removeLogin();
                 },
                 child: Container(

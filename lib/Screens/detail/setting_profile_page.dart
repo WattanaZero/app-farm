@@ -56,9 +56,6 @@ class ProfilePage extends StatelessWidget {
     String path = "/api/test/get-profile/" + username.toString();
     var res = await HttpService.getHttpMap(path, context);
     data = ProfileData.fromJson(res);
-    data?.data?.fullname =
-        '${data?.data?.firstName} ' ' ${data?.data?.lastName}';
-
     return true;
   }
 
@@ -98,7 +95,7 @@ class ProfilePage extends StatelessWidget {
                               child: Column(
                                 children: [
                                   Text(
-                                    (data!.data?.fullname).toString(),
+                                    ('${data?.data?.firstName} ' ' ${data?.data?.lastName}').toString(),
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
