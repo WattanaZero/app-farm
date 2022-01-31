@@ -1,6 +1,7 @@
 import 'package:appfarm/Screens/detail/lang_screen.dart';
 import 'package:appfarm/Screens/detail/setting_profile_page.dart';
 import 'package:appfarm/Screens/login.dart';
+import 'package:appfarm/main.dart';
 import 'package:appfarm/model/user_profile.dart';
 import 'package:appfarm/utils/auth_service.dart';
 import 'package:appfarm/widgets/topbar/appbarBg.dart';
@@ -135,6 +136,7 @@ class SettingScreen extends StatelessWidget {
                 onTap: () {
                   // Navigator.popUntil(context, ModalRoute.withName('/'));
                   // Get.find<StmAuth>().setLogin(false, null);
+                  Navigator.popUntil(context, ModalRoute.withName('/checkLogin'));
 
                   AuthenService.removeLogin();
                 },

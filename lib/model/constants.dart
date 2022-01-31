@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-const spinkit = SpinKitFadingCube(
-  color: Color(0xff6489E0),
+const spinkit = SpinKitCubeGrid(
+  color: Colors.green,
   size: 50.0,
 );
 const waitting = "WAITING";

@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Farm App',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/checkLogin',
       routes: routeApp,
       theme: ThemeData(
         primaryColor: Color(0xFF2661FA),

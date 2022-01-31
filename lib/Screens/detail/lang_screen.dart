@@ -30,7 +30,8 @@ class LangScreen extends StatelessWidget {
                   ),
                   title: Text('ภาษาไทย'),
                   trailing: Radio(
-                      value: Locale('th', 'TH') == Get.locale,
+                      // value: Locale('th', 'TH') == Get.locale,
+                      value: true,
                       groupValue: true,
                       onChanged: (value) {
                         var locale = Locale('th', 'TH');
