@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_new, prefer_const_literals_to_create_immutables, unused_local_variable, use_key_in_widget_constructors
 import 'package:appfarm/Screens/count_number_page.dart';
-import 'package:appfarm/Screens/detail/setting_profile_page.dart';
 import 'package:appfarm/Screens/waste_report.dart';
 import 'package:appfarm/widgets/card/card_count.dart';
 import 'package:appfarm/widgets/card/card_dashboard_chart.dart';
@@ -99,19 +98,11 @@ class HomePageScreen extends StatelessWidget {
                     left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
                 child: GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) => ProductSearch(),
-                    //     )).then((value) {});
-
-                    pushNewScreen(
-                      context,
-                      screen: ProductSearch(),
-                      withNavBar: false,
-                      pageTransitionAnimation:
-                          PageTransitionAnimation.cupertino,
-                    );
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductSearch(),
+                        )).then((value) {});
                   },
                   child: CardMini(
                       background: Colors.white,
@@ -129,18 +120,11 @@ class HomePageScreen extends StatelessWidget {
                   left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
               child: GestureDetector(
                 onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //       builder: (context) => WasteReport(),
-                  //     )).then((value) {});
-
-                  pushNewScreen(
-                    context,
-                    screen: WasteReport(),
-                    withNavBar: false,
-                    pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                  );
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => WasteReport(),
+                      )).then((value) {});
                 },
                 child: CardMini(
                     background: Colors.white,
@@ -159,19 +143,11 @@ class HomePageScreen extends StatelessWidget {
                     left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
                 child: GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) => ListProduct(),
-                    //     )).then((value) {});
-
-                    pushNewScreen(
-                      context,
-                      screen: ListProduct(),
-                      withNavBar: false,
-                      pageTransitionAnimation:
-                          PageTransitionAnimation.cupertino,
-                    );
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ListProduct(),
+                        )).then((value) {});
                   },
                   child: CardMini(
                       background: Colors.white,
@@ -185,53 +161,29 @@ class HomePageScreen extends StatelessWidget {
                       text: 'รายการตรวจสินค้า'),
                 )),
             Padding(
-                padding: EdgeInsets.only(
-                    left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
-                child: GestureDetector(
-                  onTap: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) => ListProduct(),
-                    //     )).then((value) {});
-
-                    pushNewScreen(
-                      context,
-                      screen: ProfilePage(),
-                      withNavBar: false,
-                      pageTransitionAnimation:
-                          PageTransitionAnimation.cupertino,
-                    );
-                  },
-                  child: CardMini(
-                      background: Colors.white,
-                      icon: Icon(
-                        Icons.person,
-                        color: Color(0xff003982),
-                        size: size.width * .12,
-                      ),
-                      size: isTablet ? size.width * .25 : size.width * .30,
-                      width: size.width,
-                      text: 'บัญชีของฉัน'),
-                )),
+              padding: EdgeInsets.only(
+                  left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
+              child: CardMini(
+                  background: Colors.white,
+                  icon: Icon(
+                    Icons.person,
+                    color: Color(0xff003982),
+                    size: size.width * .12,
+                  ),
+                  size: isTablet ? size.width * .25 : size.width * .30,
+                  width: size.width,
+                  text: 'บัญชีของฉัน'),
+            ),
             Padding(
                 padding: EdgeInsets.only(
                     left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
                 child: GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) => AdminPage(),
-                    //     )).then((value) {});
-
-                    pushNewScreen(
-                      context,
-                      screen: AdminPage(),
-                      withNavBar: false,
-                      pageTransitionAnimation:
-                          PageTransitionAnimation.cupertino,
-                    );
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AdminPage(),
+                        )).then((value) {});
                   },
                   child: CardMini(
                       background: Colors.white,
