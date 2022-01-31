@@ -22,7 +22,6 @@ class ProfilePage extends StatelessWidget {
   // String fullname;
   // String role;
 
-
   Future<bool> getList(BuildContext context) async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     var username = _prefs.getString('username');
@@ -51,17 +50,17 @@ class ProfilePage extends StatelessWidget {
     return true;
   }
 
-Future<bool> getProfile(BuildContext context) async {
+  Future<bool> getProfile(BuildContext context) async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
-    String? firstName = _prefs.getString('firstName');
-    String? lastName = _prefs.getString('lastName');
-    String? role = _prefs.getString('role');
+    var username = _prefs.getString('username');
+    String path = "/api/test/get-profile/" + username.toString();
+    var res = await HttpService.getHttpMap(path, context);
+    data = ProfileData.fromJson(res);
+    data?.data?.fullname =
+        '${data?.data?.firstName} ' ' ${data?.data?.lastName}';
 
-    String? fullName = '$firstName ' ' $lastName';
-  
     return true;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +98,7 @@ Future<bool> getProfile(BuildContext context) async {
                               child: Column(
                                 children: [
                                   Text(
-                                    'นาย Admin Admin ',
+                                    (data!.data?.fullname).toString(),
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
@@ -110,7 +109,7 @@ Future<bool> getProfile(BuildContext context) async {
                                     color: Color(0xFF2B447D),
                                   ),
                                   Text(
-                                    'ADMIN',
+                                    (data!.data?.roleCode).toString(),
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
