@@ -2,6 +2,9 @@
 
 import 'package:appfarm/Screens/detail/product_detail.dart';
 import 'package:appfarm/Screens/detail/product_detail_check.dart';
+import 'package:appfarm/api/http_service.dart';
+import 'package:appfarm/model/CountAsset.modal.dart';
+import 'package:appfarm/model/constants.dart';
 import 'package:appfarm/widgets/text/text_row.dart';
 import 'package:appfarm/widgets/topbar/appbarBg.dart';
 import 'package:flutter/foundation.dart';
@@ -9,13 +12,25 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class SummaryDetail extends StatefulWidget {
-  SummaryDetail({Key? key}) : super(key: key);
-
+  // SummaryDetail({Key? key}) : super(key: key);
+  final String? id;
+  SummaryDetail({this.id});
   @override
-  State<SummaryDetail> createState() => _summaryDetailState();
+  _summaryDetailState createState() => _summaryDetailState(id: id);
 }
 
 class _summaryDetailState extends State<SummaryDetail> {
+  _summaryDetailState({this.id});
+  final String? id;
+  CountAssetList? data;
+
+  Future<bool> getAsset() async {
+    var res = await HttpService.getHttpMap(
+        "/api/get-count-asset/" + id.toString(), context);
+    data = CountAssetList.fromJson(res);
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -24,37 +39,57 @@ class _summaryDetailState extends State<SummaryDetail> {
     return AppbarBg(
       title: 'ตรวจนับสินค้า',
       topWidget: Padding(
-        padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-        child: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                Text(
-                  "รายละเอียดงาน",
-                  // ignore: prefer_const_constructors
-                  style: TextStyle(
-                      fontSize: isTablet ? percenW * 3 : 18,
-                      fontWeight: FontWeight.bold),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TextRow(listText: ['เลขที่การตรวจนับ', 'ACN21-0035']),
-                    TextRow(listText: ['ผู้ส้างการตรวจนับ', 'สมหวัง ยินดี']),
-                    TextRow(listText: ['วันที่เริ่มตรวจ', '05 / 07 / 2021']),
-                    TextRow(listText: ['วันที่สิ้นสุด', '03 / 09 / 2021']),
-                  ],
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+          child: FutureBuilder(
+              future: getAsset(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData)
+                  return Container(
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Column(
+                          // ignore: prefer_const_literals_to_create_immutables
+                          children: [
+                            Text(
+                              "รายละเอียดงาน",
+                              // ignore: prefer_const_constructors
+                              style: TextStyle(
+                                  fontSize: isTablet ? percenW * 3 : 18,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TextRow(listText: [
+                                  'เลขที่การตรวจนับ',
+                                  'ACN21-0035'
+                                ]),
+                                TextRow(listText: [
+                                  'ผู้ส้างการตรวจนับ',
+                                  'สมหวัง ยินดี'
+                                ]),
+                                TextRow(listText: [
+                                  'วันที่เริ่มตรวจ',
+                                  '05 / 07 / 2021'
+                                ]),
+                                TextRow(listText: [
+                                  'วันที่สิ้นสุด',
+                                  '03 / 09 / 2021'
+                                ]),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                else
+                  return spinkit;
+              })),
       child: ListView(
         children: [
           Padding(

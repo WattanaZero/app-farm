@@ -1,3 +1,4 @@
+import 'package:appfarm/Screens/detail/summary_detail.dart';
 import 'package:appfarm/api/http_service.dart';
 import 'package:appfarm/model/CountAsset.modal.dart';
 import 'package:appfarm/model/constants.dart';
@@ -163,19 +164,17 @@ class _CountNumberPageState extends State<CountNumberPage> {
                                   // ignore: curly_braces_in_flow_control_structures
                                   return GestureDetector(
                                     onTap: () {
-                                      // Navigator.push(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //       builder: (context) =>
-                                      //           CountAssetDetailScreen(
-                                      //         id: dataList
-                                      //             .data[index].countAssetNo,
-                                      //       ),
-                                      //     )).then((value) {
-                                      //   // setState(() {
-                                      //   //   getSearchAssetHdr();
-                                      //   // });
-                                      // });
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => SummaryDetail(
+                                              id: (dataList!.data![index].id).toString(),
+                                            ),
+                                          )).then((value) {
+                                        // setState(() {
+                                        //   getSearchAssetHdr();
+                                        // });
+                                      });
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
