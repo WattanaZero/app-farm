@@ -580,7 +580,7 @@ class _CountNumberPageState extends State<CountNumberPage> {
                     ),
                   );
                 else
-                  return test();
+                  return spinkit;
               }),
         ));
   }

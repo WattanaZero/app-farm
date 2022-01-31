@@ -5,6 +5,7 @@ import 'package:appfarm/main.dart';
 import 'package:appfarm/model/user_profile.dart';
 import 'package:appfarm/utils/auth_service.dart';
 import 'package:appfarm/widgets/topbar/appbarBg.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
@@ -135,10 +136,38 @@ class SettingScreen extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   // Navigator.popUntil(context, ModalRoute.withName('/'));
-                  // Get.find<StmAuth>().setLogin(false, null);
-                  Navigator.popUntil(context, ModalRoute.withName('/checkLogin'));
 
-                  AuthenService.removeLogin();
+                  // Navigator.of(context).popUntil((route) {
+                  //   return route.settings.name == "LoginScreen";
+                  // });
+                 
+
+                  // Navigator.of(context).pushAndRemoveUntil(
+                  //   CupertinoPageRoute(
+                  //     builder: (BuildContext context) {
+                  //       return CkeckLoginScreen();
+                  //     },
+                  //   ),
+                  //   (_) => false,
+                  // );
+
+                   pushNewScreen(
+                      context,
+                      screen: CkeckLoginScreen(),
+                      withNavBar: false,
+                      pageTransitionAnimation:
+                          PageTransitionAnimation.cupertino,
+                    );
+
+                   AuthenService.removeLogin();
+
+                  // pushDynamicScreen(
+                  //   context,
+                  //   screen: LoginScreen(),
+                  //   withNavBar: false,
+                  // );
+
+                  
                 },
                 child: Container(
                   width: double.infinity,

@@ -120,7 +120,7 @@ class ProfilePage extends StatelessWidget {
                       ),
                     );
                   else
-                    return test();
+                    return spinkit;
                 })),
         child: FutureBuilder(
             future: getList(context),
@@ -166,7 +166,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                 );
               else
-                return test();
+                return spinkit;
             }));
   }
 }

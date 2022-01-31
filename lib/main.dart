@@ -42,7 +42,7 @@ class CkeckLoginScreen extends StatelessWidget {
       } else if (authCon.isLogin.value == 'isNotLogIn') {
         return LoginScreen();
       }
-      return Scaffold(body: test());
+      return Scaffold(body: spinkit);
     });
   }
 }
