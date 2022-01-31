@@ -2,6 +2,7 @@
 import 'package:appfarm/Screens/count_number_page.dart';
 import 'package:appfarm/Screens/home_page.dart';
 import 'package:appfarm/Screens/setting_page.dart';
+import 'package:appfarm/Screens/waste_report.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -51,7 +52,7 @@ class Home extends StatelessWidget {
   }
 
   List<Widget> _buildScreens() {
-    return [HomePageScreen(),CountNumberPage(), SettingScreen()];
+    return [HomePageScreen(),CountNumberPage(),WasteReport(), SettingScreen()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
@@ -65,6 +66,12 @@ class Home extends StatelessWidget {
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.checkmark_rectangle),
         title: ("ตรวจนับ"),
+        activeColorPrimary: CupertinoColors.activeBlue,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+       PersistentBottomNavBarItem(
+        icon: Icon(Icons.warning_amber_rounded),
+        title: ("แจ้งซ่อม"),
         activeColorPrimary: CupertinoColors.activeBlue,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),

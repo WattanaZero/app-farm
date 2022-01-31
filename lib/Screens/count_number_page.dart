@@ -9,6 +9,7 @@ import 'package:appfarm/widgets/topbar/appbarBg.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:intl/intl.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class CountNumberPage extends StatefulWidget {
   // CountNumberPage({Key? key}) : super(key: key);
@@ -164,17 +165,25 @@ class _CountNumberPageState extends State<CountNumberPage> {
                                   // ignore: curly_braces_in_flow_control_structures
                                   return GestureDetector(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => SummaryDetail(
-                                              id: (dataList!.data![index].id).toString(),
-                                            ),
-                                          )).then((value) {
-                                        // setState(() {
-                                        //   getSearchAssetHdr();
-                                        // });
-                                      });
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //       builder: (context) => SummaryDetail(
+                                      //         id: (dataList!.data![index].id).toString(),
+                                      //       ),
+                                      //     )).then((value) {
+                                      //   // setState(() {
+                                      //   //   getSearchAssetHdr();
+                                      //   // });
+                                      // });
+                                      print((dataList!.data![index].id).toString());
+                                      pushNewScreen(
+                                        context,
+                                        screen: SummaryDetail(id: (dataList!.data![index].id).toString()),
+                                        withNavBar: false,
+                                        pageTransitionAnimation:
+                                            PageTransitionAnimation.cupertino,
+                                      );
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(

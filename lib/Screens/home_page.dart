@@ -7,6 +7,7 @@ import 'package:appfarm/widgets/card/card_mini.dart';
 import 'package:appfarm/widgets/topbar/appbarBg.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 import 'admin.dart';
 import 'list_product.dart';
@@ -67,11 +68,19 @@ class HomePageScreen extends StatelessWidget {
                     left: isTablet ? 50 : 0, bottom: isTablet ? 20 : 0),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CountNumberPage(),
-                        )).then((value) {});
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => CountNumberPage(),
+                    //     )).then((value) {});
+
+                    pushNewScreen(
+                      context,
+                      screen: CountNumberPage(),
+                      withNavBar: false,
+                      pageTransitionAnimation:
+                          PageTransitionAnimation.cupertino,
+                    );
                   },
                   child: CardMini(
                       background: Colors.white,

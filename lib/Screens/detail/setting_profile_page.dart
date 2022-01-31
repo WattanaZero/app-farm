@@ -19,19 +19,14 @@ class ProfilePage extends StatelessWidget {
   final authSer = Get.find<StmAuth>();
   ProfileData? data;
 
-  String? getName() {
-    final userData = authSer.userData;
-    String? fullName = userData?.firstName ;
+  // String fullname;
+  // String role;
 
-    return fullName;
-  }
 
   Future<bool> getList(BuildContext context) async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     var username = _prefs.getString('username');
-    String path =
-        "/api/test/get-profile/" +
-            username.toString();
+    String path = "/api/test/get-profile/" + username.toString();
     var res = await HttpService.getHttpMap(path, context);
     data = ProfileData.fromJson(res);
     // var res = await http.get(Uri.parse(path));
@@ -56,61 +51,81 @@ class ProfilePage extends StatelessWidget {
     return true;
   }
 
+Future<bool> getProfile(BuildContext context) async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    String? firstName = _prefs.getString('firstName');
+    String? lastName = _prefs.getString('lastName');
+    String? role = _prefs.getString('role');
+
+    String? fullName = '$firstName ' ' $lastName';
+  
+    return true;
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return AppbarBg(
         title: 'บัญชีของฉัน',
         topWidget: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(20),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 60,
-                    // backgroundImage: null != dataEmployee?.data?.image64
-                    //     ? Image.memory(
-                    //         base64Decode(
-                    //             dataEmployee.data.image64.split(',').last),
-                    //         // height: 100,
-                    //         // width: 100,
-                    //         fit: BoxFit.cover,
-                    //       ).image
-                    //     : AssetImage("assets/img/icon/3543456.jpg"),
-                  ),
-                  Expanded(
-                      child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      children: [
-                        Text(
-                          getName().toString(),
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: FutureBuilder(
+                future: getProfile(context),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData)
+                    return Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(20),
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 60,
+                              // backgroundImage: null != dataEmployee?.data?.image64
+                              //     ? Image.memory(
+                              //         base64Decode(
+                              //             dataEmployee.data.image64.split(',').last),
+                              //         // height: 100,
+                              //         // width: 100,
+                              //         fit: BoxFit.cover,
+                              //       ).image
+                              //     : AssetImage("assets/img/icon/3543456.jpg"),
+                            ),
+                            Expanded(
+                                child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'นาย Admin Admin ',
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20),
+                                  ),
+                                  Divider(
+                                    thickness: 3,
+                                    color: Color(0xFF2B447D),
+                                  ),
+                                  Text(
+                                    'ADMIN',
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20),
+                                  )
+                                ],
+                              ),
+                            ))
+                          ],
                         ),
-                        Divider(
-                          thickness: 3,
-                          color: Color(0xFF2B447D),
-                        ),
-                        Text(
-                          'ADMIN',
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        )
-                      ],
-                    ),
-                  ))
-                ],
-              ),
-            ),
-          ),
-        ),
+                      ),
+                    );
+                  else
+                    return spinkit;
+                })),
         child: FutureBuilder(
             future: getList(context),
             builder: (context, snapshot) {

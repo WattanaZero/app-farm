@@ -6,6 +6,7 @@ import 'package:appfarm/widgets/topbar/appbarBg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class SettingScreen extends StatelessWidget {
   // final authCon = Get.find<StmAuth>();
@@ -35,12 +36,20 @@ class SettingScreen extends StatelessWidget {
                 ),
                 ListTile(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ProfilePage(
-                                dataProfileData: data,
-                                )));
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => ProfilePage(
+                    //               dataProfileData: data,
+                    //             )));
+
+                    pushNewScreen(
+                      context,
+                      screen: ProfilePage(),
+                      withNavBar: false,
+                      pageTransitionAnimation:
+                          PageTransitionAnimation.cupertino,
+                    );
                   },
                   leading: Container(
                     decoration: BoxDecoration(
@@ -119,6 +128,7 @@ class SettingScreen extends StatelessWidget {
                 onTap: () {
                   // Navigator.popUntil(context, ModalRoute.withName('/'));
                   // Get.find<StmAuth>().setLogin(false, null);
+                  
                   AuthenService.removeLogin();
                 },
                 child: Container(
